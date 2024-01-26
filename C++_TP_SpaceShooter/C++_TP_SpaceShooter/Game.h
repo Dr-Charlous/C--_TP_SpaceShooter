@@ -2,6 +2,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "BackGround.h"
+#include "Spaceship.h"
 
 class Game
 {
@@ -20,5 +21,6 @@ protected:
 	sf::Clock clock;
 	sf::RenderWindow window;
 	BackGround background;
+	Spaceship spaceship;
 };
 

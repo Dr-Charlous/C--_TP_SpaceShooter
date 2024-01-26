@@ -1,13 +1,8 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 class Spaceship
 {
-protected:
-	int x;
-	int y;
-	int speed;
-
 public:
-
 	Spaceship(int _x, int _y);
 
 	int getX();
@@ -23,7 +18,15 @@ public:
 	void left();
 	void forward();
 	void backward();
-	void display();
+	void display(sf::Event event);
+	void draw(sf::RenderWindow &_window);
 	void fire();
+
+protected:
+	int x;
+	int y;
+	int speed;
+	sf::Texture textureSpaceShip;
+	sf::Sprite spriteSpaceShip;
 };
 

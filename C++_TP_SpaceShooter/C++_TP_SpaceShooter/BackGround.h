@@ -5,8 +5,8 @@ class BackGround
 {
 public:
 	void setTexture();
-	void updateTexture(float _timeBetween);
-	void drawBackGround(sf::RenderWindow &_window);
+	void update(float _timeBetween);
+	void draw(sf::RenderWindow &_window);
 protected:
 	sf::Texture backGroundTexture;
 	sf::Sprite backGroundSprite1;

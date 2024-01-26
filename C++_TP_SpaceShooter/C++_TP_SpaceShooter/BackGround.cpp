@@ -13,7 +13,7 @@ void BackGround::setTexture()
 	backGroundSprite2.setPosition(0, -Game::WINDOW_HEIGHT);
 }
 
-void BackGround::updateTexture(float _timeBetween)
+void BackGround::update(float _timeBetween)
 {
 	backGroundSprite1.move(0.f, 120.f * _timeBetween);
 	if (backGroundSprite1.getPosition().y > (float)Game::WINDOW_HEIGHT)
@@ -24,7 +24,7 @@ void BackGround::updateTexture(float _timeBetween)
 		backGroundSprite2.setPosition(0, -(float)backGroundSprite2.getPosition().y);
 }
 
-void BackGround::drawBackGround(sf::RenderWindow &_window)
+void BackGround::draw(sf::RenderWindow &_window)
 {
 	_window.draw(backGroundSprite1);
 	_window.draw(backGroundSprite2);

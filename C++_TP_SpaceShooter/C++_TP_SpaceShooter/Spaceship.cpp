@@ -4,8 +4,13 @@
 Spaceship::Spaceship(int _x, int _y) :
 	x(_x),
 	y(_y),
-	speed(1)
+	speed(10)
 {
+	if (!textureSpaceShip.loadFromFile("Assets/Shooter/spaceship.png")) {
+		std::cout << "Erreur" << std::endl;
+	}
+	spriteSpaceShip.setTexture(textureSpaceShip);
+	spriteSpaceShip.setPosition(x, y);
 }
 
 int Spaceship::getX()
@@ -40,27 +45,52 @@ void Spaceship::setSpeed(int speed)
 
 void Spaceship::right()
 {
-	this->x++;
+	this->x+= speed;
 }
 
 void Spaceship::left()
 {
-	this->x--;
+	this->x-= speed;
 }
 
 void Spaceship::forward()
 {
-	this->y--;
+	this->y-= speed;
 }
 
 void Spaceship::backward()
 {
-	this->y++;
+	this->y+=speed;
 }
 
-void Spaceship::display()
+void Spaceship::display(sf::Event event)
 {
-	std::cout << "Spaceship on position(" << x << ", " << y << ")" << std::endl;
+	if (event.type == sf::Event::KeyPressed) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		{
+			left();
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		{
+			right();
+		}
+		
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		{
+			forward();
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		{
+			backward();
+		}
+	}
+
+	spriteSpaceShip.setPosition(x, y);
+}
+
+void Spaceship::draw(sf::RenderWindow &_window)
+{
+	_window.draw(spriteSpaceShip);
 }
 
 void Spaceship::fire()
