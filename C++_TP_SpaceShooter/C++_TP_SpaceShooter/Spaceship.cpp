@@ -1,7 +1,7 @@
 #include "Spaceship.h"
 #include <iostream>
 
-Spaceship::Spaceship(int _x, int _y) :
+Spaceship::Spaceship(float _x, float _y) :
 	x(_x),
 	y(_y),
 	speed(10)
@@ -18,7 +18,7 @@ int Spaceship::getX()
 	return this->x;
 }
 
-void Spaceship::setX(int x)
+void Spaceship::setX(float x)
 {
 	this->x = x;
 }
@@ -28,7 +28,7 @@ int Spaceship::getY()
 	return this->y;
 }
 
-void Spaceship::setY(int y)
+void Spaceship::setY(float y)
 {
 	this->y = y;
 }
@@ -55,7 +55,7 @@ void Spaceship::left()
 
 void Spaceship::forward()
 {
-	this->y-= speed;
+	this->y-=speed;
 }
 
 void Spaceship::backward()
@@ -84,7 +84,10 @@ void Spaceship::display(sf::Event event)
 			backward();
 		}
 	}
+}
 
+void Spaceship::update(float _time)
+{
 	spriteSpaceShip.setPosition(x, y);
 }
 

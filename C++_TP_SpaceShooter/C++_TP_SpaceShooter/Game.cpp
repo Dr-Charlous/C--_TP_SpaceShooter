@@ -28,6 +28,7 @@ void Game::update() {
 	float timeBetween = clock.getElapsedTime().asSeconds();
 	clock.restart();
 
+	spaceship.update(timeBetween);
 	background.update(timeBetween);
 }
 

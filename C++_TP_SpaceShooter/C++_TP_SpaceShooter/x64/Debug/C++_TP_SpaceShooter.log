@@ -1,9 +1,8 @@
-﻿  Game.cpp
-C:\Users\charles.piercourt\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\Game.cpp(5,122): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
+﻿  BackGround.cpp
+  Game.cpp
+  Source.cpp
   Spaceship.cpp
-C:\Users\charles.piercourt\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\Spaceship.cpp(13,33): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\charles.piercourt\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\Spaceship.cpp(13,30): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\charles.piercourt\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\Spaceship.cpp(88,33): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\charles.piercourt\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\Spaceship.cpp(88,30): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\charles.piercourt\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\Spaceship.cpp(18,13): warning C4244: 'return' : conversion de 'float' en 'int', perte possible de données
+C:\Users\charles.piercourt\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\Spaceship.cpp(28,13): warning C4244: 'return' : conversion de 'float' en 'int', perte possible de données
   Génération de code en cours...
   C++_TP_SpaceShooter.vcxproj -> C:\Users\charles.piercourt\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\x64\Debug\C++_TP_SpaceShooter.exe

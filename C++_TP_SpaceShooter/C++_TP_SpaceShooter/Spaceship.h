@@ -3,13 +3,13 @@
 class Spaceship
 {
 public:
-	Spaceship(int _x, int _y);
+	Spaceship(float _x, float _y);
 
 	int getX();
-	void setX(int x);
+	void setX(float x);
 
 	int getY();
-	void setY(int y);
+	void setY(float y);
 
 	int getSpeed();
 	void setSpeed(int speed);
@@ -19,12 +19,13 @@ public:
 	void forward();
 	void backward();
 	void display(sf::Event event);
+	void update(float _time);
 	void draw(sf::RenderWindow &_window);
 	void fire();
 
 protected:
-	int x;
-	int y;
+	float x;
+	float y;
 	int speed;
 	sf::Texture textureSpaceShip;
 	sf::Sprite spriteSpaceShip;

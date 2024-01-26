@@ -1,7 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "GameObject.h"
 
-class BackGround
+class BackGround : public GameObject
 {
 public:
 	void setTexture();
