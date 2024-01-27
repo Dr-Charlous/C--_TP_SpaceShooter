@@ -1,11 +1,8 @@
 ﻿  BackGround.cpp
-C:\Users\Charles\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\BackGround.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'SFML/Graphics.hpp' : No such file or directory
   Game.cpp
-C:\Users\Charles\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\Game.h(3,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'SFML/Graphics.hpp' : No such file or directory
-  GameObject.cpp
-C:\Users\Charles\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\GameObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'SFML/Graphics.hpp' : No such file or directory
   Source.cpp
-C:\Users\Charles\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\Source.cpp(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'SFML/Graphics.hpp' : No such file or directory
   Spaceship.cpp
-C:\Users\Charles\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\Spaceship.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'SFML/Graphics.hpp' : No such file or directory
+C:\Users\charles.piercourt\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\Spaceship.cpp(18,13): warning C4244: 'return' : conversion de 'float' en 'int', perte possible de données
+C:\Users\charles.piercourt\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\Spaceship.cpp(28,13): warning C4244: 'return' : conversion de 'float' en 'int', perte possible de données
   Génération de code en cours...
+  C++_TP_SpaceShooter.vcxproj -> C:\Users\charles.piercourt\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\x64\Debug\C++_TP_SpaceShooter.exe
