@@ -3,6 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include "BackGround.h"
 #include "Spaceship.h"
+#include "EnnemySpawner.h"
+#include "EnnemyShip.h"
 
 class Game
 {
@@ -21,6 +23,8 @@ protected:
 	sf::Clock clock;
 	sf::RenderWindow window;
 	BackGround background;
+	EnnemySpawner ennemySpawner;
 	Spaceship spaceship;
+	std::vector<GameObject*> objectsInScene;
 };
 

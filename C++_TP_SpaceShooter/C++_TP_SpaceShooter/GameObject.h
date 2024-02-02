@@ -4,7 +4,11 @@
 class GameObject
 {
 public:
-	GameObject(float _x, float _y, std::string _spriteLocation);
+	GameObject(std::string _nameClass, float _x, float _y, std::string _spriteLocation);
+	std::string nameClass;
+
+	std::string getNameClass();
+	void setNameClass(std::string nameClass);
 
 	float getX();
 	void setX(float x);

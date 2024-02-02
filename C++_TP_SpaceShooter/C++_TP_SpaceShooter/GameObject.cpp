@@ -2,7 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-GameObject::GameObject(float _x, float _y, std::string _spriteLocation) :
+GameObject::GameObject(std::string _nameClass, float _x, float _y, std::string _spriteLocation) :
+	nameClass(_nameClass),
 	x(_x),
 	y(_y),
 	spriteLocation(_spriteLocation),
@@ -13,6 +14,16 @@ GameObject::GameObject(float _x, float _y, std::string _spriteLocation) :
 	}
 	spriteSpaceShip.setTexture(textureSpaceShip);
 	spriteSpaceShip.setPosition(x, y);
+}
+
+std::string GameObject::getNameClass()
+{
+	return this->nameClass;
+}
+
+void GameObject::setNameClass(std::string nameClass)
+{
+	this->nameClass = nameClass;
 }
 
 float GameObject::getX()

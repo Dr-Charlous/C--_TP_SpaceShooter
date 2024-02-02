@@ -4,6 +4,6 @@
 class EnnemyShip : public GameObject
 {
 public :
-	EnnemyShip(float _x, float _y, std::string _spriteLocation);
+	EnnemyShip(std::string _nameClass, float _x, float _y, std::string _spriteLocation);
 };
 
