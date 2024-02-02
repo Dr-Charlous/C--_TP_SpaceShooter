@@ -95,3 +95,41 @@ void GameObject::draw(sf::RenderWindow& _window)
 {
 	_window.draw(spriteSpaceShip);
 }
+
+void GameObject::inputs(sf::RenderWindow& _window, sf::Event event, float _time)
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && x > 0)
+	{
+		left(_time);
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && x < _window.getSize().x - textureSpaceShip.getSize().x)
+	{
+		right(_time);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && y > 0)
+	{
+		forward(_time);
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && y < _window.getSize().y - textureSpaceShip.getSize().y)
+	{
+		backward(_time);
+	}
+
+	//std::cout << _window.getSize().x << " : " << _window.getSize().y << std::endl;
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		fire();
+	}
+}
+
+void GameObject::fire()
+{
+	float timeBetween = clock.getElapsedTime().asSeconds();
+	if (timeBetween > timeBetweenFire)
+	{
+		clock.restart();
+		std::cout << "Fire" << std::endl;
+	}
+}

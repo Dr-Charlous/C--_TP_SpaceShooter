@@ -29,7 +29,10 @@ void Game::processEvents() {
 
 	}
 	float timeBetween = clock.getElapsedTime().asSeconds();
-	spaceship.inputs(event, timeBetween);
+
+	for (int i = 0; i < objectsInScene.size(); i++) {
+		objectsInScene[i]->inputs(window, event, timeBetween);
+	}
 
 	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	//	ennemySpawner.deleteEnnemy(objectsInScene);

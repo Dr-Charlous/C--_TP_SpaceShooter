@@ -18,7 +18,7 @@ public:
 
 	float getSpeed();
 	void setSpeed(float speed);
-	
+
 	std::string getSprite();
 	void setSprite(std::string spriteLocation);
 
@@ -30,12 +30,17 @@ public:
 	void update(float _time);
 	void draw(sf::RenderWindow& _window);
 
+	virtual void inputs(sf::RenderWindow& _window, sf::Event event, float _time);
+	virtual void fire();
+
+	sf::Texture textureSpaceShip;
 protected:
 	float x;
 	float y;
 	float speed;
 	std::string spriteLocation;
-	sf::Texture textureSpaceShip;
 	sf::Sprite spriteSpaceShip;
+	sf::Clock clock;
+	float timeBetweenFire;
 };
 
