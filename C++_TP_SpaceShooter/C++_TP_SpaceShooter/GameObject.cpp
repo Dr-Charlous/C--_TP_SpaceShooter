@@ -75,32 +75,6 @@ void GameObject::backward(float _time)
 	this->y += speed * _time;
 }
 
-void GameObject::inputs(sf::Event event, float _time)
-{
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-	{
-		left(_time);
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-	{
-		right(_time);
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-	{
-		forward(_time);
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-	{
-		backward(_time);
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	{
-		fire();
-	}
-}
-
 void GameObject::update(float _time)
 {
 	spriteSpaceShip.setPosition(x, y);
@@ -109,9 +83,4 @@ void GameObject::update(float _time)
 void GameObject::draw(sf::RenderWindow& _window)
 {
 	_window.draw(spriteSpaceShip);
-}
-
-void GameObject::fire()
-{
-	std::cout << "Fire" << std::endl;
 }

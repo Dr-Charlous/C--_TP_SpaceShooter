@@ -22,10 +22,9 @@ public:
 	void left(float _time);
 	void forward(float _time);
 	void backward(float _time);
-	void inputs(sf::Event event, float _time);
+
 	void update(float _time);
 	void draw(sf::RenderWindow& _window);
-	void fire();
 
 protected:
 	float x;
