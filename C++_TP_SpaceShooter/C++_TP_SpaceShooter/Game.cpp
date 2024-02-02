@@ -20,8 +20,10 @@ void Game::processEvents() {
 	{
 		if (event.type == sf::Event::Closed)
 			window.close();
-		spaceship.display(event);
+
 	}
+	float timeBetween = clock.getElapsedTime().asSeconds();
+	spaceship.display(event, timeBetween);
 }
 
 void Game::update() {

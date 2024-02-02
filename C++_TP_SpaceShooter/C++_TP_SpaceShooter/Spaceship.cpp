@@ -4,7 +4,7 @@
 Spaceship::Spaceship(float _x, float _y) :
 	x(_x),
 	y(_y),
-	speed(10)
+	speed(1000)
 {
 	if (!textureSpaceShip.loadFromFile("Assets/Shooter/spaceship.png")) {
 		std::cout << "Erreur" << std::endl;
@@ -13,7 +13,7 @@ Spaceship::Spaceship(float _x, float _y) :
 	spriteSpaceShip.setPosition(x, y);
 }
 
-int Spaceship::getX()
+float Spaceship::getX()
 {
 	return this->x;
 }
@@ -23,7 +23,7 @@ void Spaceship::setX(float x)
 	this->x = x;
 }
 
-int Spaceship::getY()
+float Spaceship::getY()
 {
 	return this->y;
 }
@@ -33,57 +33,60 @@ void Spaceship::setY(float y)
 	this->y = y;
 }
 
-int Spaceship::getSpeed()
+float Spaceship::getSpeed()
 {
 	return this->speed;
 }
 
-void Spaceship::setSpeed(int speed)
+void Spaceship::setSpeed(float speed)
 {
 	this->speed = speed;
 }
 
-void Spaceship::right()
+void Spaceship::right(float _time)
 {
-	this->x+= speed;
+	this->x += speed * _time;
 }
 
-void Spaceship::left()
+void Spaceship::left(float _time)
 {
-	this->x-= speed;
+	this->x -= speed * _time;
 }
 
-void Spaceship::forward()
+void Spaceship::forward(float _time)
 {
-	this->y-=speed;
+	this->y -= speed * _time;
 }
 
-void Spaceship::backward()
+void Spaceship::backward(float _time)
 {
-	this->y+=speed;
+	this->y += speed * _time;
 }
 
-void Spaceship::display(sf::Event event)
+void Spaceship::display(sf::Event event, float _time)
 {
-	if (event.type == sf::Event::KeyPressed) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
-			left();
+			left(_time);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
-			right();
+			right(_time);
 		}
 		
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
-			forward();
+			forward(_time);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		{
-			backward();
+			backward(_time);
 		}
-	}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		{
+			fire();
+		}
 }
 
 void Spaceship::update(float _time)

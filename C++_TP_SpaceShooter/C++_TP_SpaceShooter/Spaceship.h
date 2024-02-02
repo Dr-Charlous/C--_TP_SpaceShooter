@@ -5,20 +5,20 @@ class Spaceship
 public:
 	Spaceship(float _x, float _y);
 
-	int getX();
+	float getX();
 	void setX(float x);
 
-	int getY();
+	float getY();
 	void setY(float y);
 
-	int getSpeed();
-	void setSpeed(int speed);
+	float getSpeed();
+	void setSpeed(float speed);
 
-	void right();
-	void left();
-	void forward();
-	void backward();
-	void display(sf::Event event);
+	void right(float _time);
+	void left(float _time);
+	void forward(float _time);
+	void backward(float _time);
+	void display(sf::Event event, float _time);
 	void update(float _time);
 	void draw(sf::RenderWindow &_window);
 	void fire();
@@ -26,7 +26,7 @@ public:
 protected:
 	float x;
 	float y;
-	int speed;
+	float speed;
 	sf::Texture textureSpaceShip;
 	sf::Sprite spriteSpaceShip;
 };
