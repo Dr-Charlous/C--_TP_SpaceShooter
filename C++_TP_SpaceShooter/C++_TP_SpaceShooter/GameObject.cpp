@@ -2,26 +2,116 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-void GameObject::findTexture(std::string nameFile)
+GameObject::GameObject(float _x, float _y, std::string _spriteLocation) :
+	x(_x),
+	y(_y),
+	spriteLocation(_spriteLocation),
+	speed(100)
 {
-	std::string folderPath = "Assets/Shooter/" + nameFile + ".png";
-	if (!texture.loadFromFile(folderPath)) {
+	if (!textureSpaceShip.loadFromFile(spriteLocation)) {
 		std::cout << "Erreur" << std::endl;
 	}
-	setTextureOnSprite();
+	spriteSpaceShip.setTexture(textureSpaceShip);
+	spriteSpaceShip.setPosition(x, y);
 }
 
-void GameObject::setTextureOnSprite()
+float GameObject::getX()
 {
-	sprite.setTexture(texture);
-	sprite.setPosition(x, y);
+	return this->x;
 }
 
-void GameObject::update()
+void GameObject::setX(float x)
 {
+	this->x = x;
 }
 
-void GameObject::render(sf::RenderWindow& _window)
+float GameObject::getY()
 {
-	_window.draw(sprite);
+	return this->y;
+}
+
+void GameObject::setY(float y)
+{
+	this->y = y;
+}
+
+float GameObject::getSpeed()
+{
+	return this->speed;
+}
+
+void GameObject::setSpeed(float speed)
+{
+	this->speed = speed;
+}
+
+std::string GameObject::getSprite()
+{
+	return this->spriteLocation;
+}
+
+void GameObject::setSprite(std::string spriteLocation)
+{
+	this->spriteLocation = spriteLocation;
+}
+
+void GameObject::right(float _time)
+{
+	this->x += speed * _time;
+}
+
+void GameObject::left(float _time)
+{
+	this->x -= speed * _time;
+}
+
+void GameObject::forward(float _time)
+{
+	this->y -= speed * _time;
+}
+
+void GameObject::backward(float _time)
+{
+	this->y += speed * _time;
+}
+
+void GameObject::inputs(sf::Event event, float _time)
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		left(_time);
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	{
+		right(_time);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		forward(_time);
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		backward(_time);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		fire();
+	}
+}
+
+void GameObject::update(float _time)
+{
+	spriteSpaceShip.setPosition(x, y);
+}
+
+void GameObject::draw(sf::RenderWindow& _window)
+{
+	_window.draw(spriteSpaceShip);
+}
+
+void GameObject::fire()
+{
+	std::cout << "Fire" << std::endl;
 }

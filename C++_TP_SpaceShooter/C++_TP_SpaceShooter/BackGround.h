@@ -2,9 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include "GameObject.h"
 
-class BackGround : public GameObject
+class BackGround
 {
 public:
+	BackGround();
 	void setTexture();
 	void update(float _timeBetween);
 	void draw(sf::RenderWindow &_window);

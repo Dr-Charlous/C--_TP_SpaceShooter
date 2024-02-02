@@ -4,15 +4,35 @@
 class GameObject
 {
 public:
-	virtual void findTexture(std::string nameFile);
-	virtual void setTextureOnSprite();
-	virtual void update();
-	virtual void render(sf::RenderWindow &_window);
+	GameObject(float _x, float _y, std::string _spriteLocation);
+
+	float getX();
+	void setX(float x);
+
+	float getY();
+	void setY(float y);
+
+	float getSpeed();
+	void setSpeed(float speed);
+	
+	std::string getSprite();
+	void setSprite(std::string spriteLocation);
+
+	void right(float _time);
+	void left(float _time);
+	void forward(float _time);
+	void backward(float _time);
+	void inputs(sf::Event event, float _time);
+	void update(float _time);
+	void draw(sf::RenderWindow& _window);
+	void fire();
 
 protected:
-	int x;
-	int y;
-	sf::Texture texture;
-	sf::Sprite sprite;
+	float x;
+	float y;
+	float speed;
+	std::string spriteLocation;
+	sf::Texture textureSpaceShip;
+	sf::Sprite spriteSpaceShip;
 };
 

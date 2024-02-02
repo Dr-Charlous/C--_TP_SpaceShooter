@@ -2,7 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-Game::Game(const std::string& title) : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), title), spaceship(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 8 * 6) {
+Game::Game(const std::string& title) : 
+	window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), title),
+	spaceship(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 8 * 6, "Assets/Shooter/spaceship.png")
+{
 	background.setTexture();
 }
 
@@ -23,7 +26,7 @@ void Game::processEvents() {
 
 	}
 	float timeBetween = clock.getElapsedTime().asSeconds();
-	spaceship.display(event, timeBetween);
+	spaceship.inputs(event, timeBetween);
 }
 
 void Game::update() {

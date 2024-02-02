@@ -3,6 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include "Game.h"
 
+BackGround::BackGround() {
+}
+
 void BackGround::setTexture()
 {
 	if (!backGroundTexture.loadFromFile("Assets/Shooter/background.png")) {
