@@ -19,8 +19,11 @@ public:
 	float getSpeed();
 	void setSpeed(float speed);
 
-	std::string getSprite();
-	void setSprite(std::string spriteLocation);
+	std::string getSpriteName();
+	void setSpriteName(std::string spriteLocation);
+
+	sf::Sprite& getSprite();
+	void setSprite(sf::Sprite spriteSpaceShip);
 
 	void right(float _time);
 	void left(float _time);
@@ -30,7 +33,7 @@ public:
 	void update(float _time);
 	void draw(sf::RenderWindow& _window);
 
-	virtual void inputs(sf::RenderWindow& _window, sf::Event event, float _time);
+	virtual void inputs(sf::RenderWindow& _window, sf::Event event, float _time, std::vector<GameObject*> objectsToDelete);
 	virtual void fire();
 
 	sf::Texture textureSpaceShip;

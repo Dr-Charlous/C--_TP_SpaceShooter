@@ -5,7 +5,7 @@ class EnnemyShip : public GameObject
 {
 public :
 	EnnemyShip(std::string _nameClass, float _x, float _y, std::string _spriteLocation);
-	void inputs(sf::RenderWindow& _window, sf::Event event, float _time) override;
+	void inputs(sf::RenderWindow& _window, sf::Event event, float _time, std::vector<GameObject*> objectsToDelete) override;
 	void fire() override;
 
 protected:

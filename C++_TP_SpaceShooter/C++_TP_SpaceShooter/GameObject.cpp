@@ -57,14 +57,24 @@ void GameObject::setSpeed(float speed)
 	this->speed = speed;
 }
 
-std::string GameObject::getSprite()
+std::string GameObject::getSpriteName()
 {
 	return this->spriteLocation;
 }
 
-void GameObject::setSprite(std::string spriteLocation)
+void GameObject::setSpriteName(std::string spriteLocation)
 {
 	this->spriteLocation = spriteLocation;
+}
+
+sf::Sprite& GameObject::getSprite()
+{
+	return this->spriteSpaceShip;
+}
+
+void GameObject::setSprite(sf::Sprite spriteSpaceShip)
+{
+	this->spriteSpaceShip = spriteSpaceShip;
 }
 
 void GameObject::right(float _time)
@@ -97,7 +107,7 @@ void GameObject::draw(sf::RenderWindow& _window)
 	_window.draw(spriteSpaceShip);
 }
 
-void GameObject::inputs(sf::RenderWindow& _window, sf::Event event, float _time)
+void GameObject::inputs(sf::RenderWindow& _window, sf::Event event, float _time, std::vector<GameObject*> objectsToDelete)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && x > 0)
 	{
@@ -128,7 +138,7 @@ void GameObject::inputs(sf::RenderWindow& _window, sf::Event event, float _time)
 void GameObject::fire()
 {
 	float timeBetween = clock.getElapsedTime().asSeconds();
-	if (timeBetween >= timeBetweenFire)
+	if (timeBetween > timeBetweenFire)
 	{
 		clock.restart();
 		std::cout << "Fire" << std::endl;

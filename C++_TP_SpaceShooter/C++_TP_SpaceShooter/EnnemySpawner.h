@@ -6,7 +6,12 @@
 class EnnemySpawner
 {
 public:
+	EnnemySpawner();
 	void createEnnemy(std::vector<GameObject*>& objectsInScene);
-	void deleteEnnemy(std::vector<GameObject*>& objectsInScene);
+	//void deleteEnnemy(std::vector<GameObject*>& objectsInScene);
+
+protected :
+	sf::Clock clock;
+	float timeBetweenSpawn;
 };
 

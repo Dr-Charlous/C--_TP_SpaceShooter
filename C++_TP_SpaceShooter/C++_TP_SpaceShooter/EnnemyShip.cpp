@@ -8,14 +8,14 @@ EnnemyShip::EnnemyShip(std::string _nameClass, float _x, float _y, std::string _
 {
 }
 
-void EnnemyShip::inputs(sf::RenderWindow& _window, sf::Event event, float _time)
+void EnnemyShip::inputs(sf::RenderWindow& _window, sf::Event event, float _time, std::vector<GameObject*> objectsToDelete)
 {
-	if (y < Game::WINDOW_HEIGHT) {
+	if (y - textureSpaceShip.getSize().y <= Game::WINDOW_HEIGHT) {
 		backward(_time);
 		fire();
 	}
 	else {
-		//delete(this);
+		objectsToDelete.push_back(this);
 	}
 }
 

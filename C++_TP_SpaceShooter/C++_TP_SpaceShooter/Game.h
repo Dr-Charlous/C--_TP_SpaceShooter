@@ -20,6 +20,7 @@ public:
 	void render();
 
 	std::vector<GameObject*> objectsInScene;
+	std::vector<GameObject*> objectsToDelete;
 	bool contains(const std::vector<GameObject*>& vec, const GameObject* coord);
 
 protected:

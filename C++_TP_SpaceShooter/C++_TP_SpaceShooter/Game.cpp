@@ -8,8 +8,6 @@ Game::Game(const std::string& title) :
 {
 	background.setTexture();
 	objectsInScene.push_back(&spaceship);
-
-	ennemySpawner.createEnnemy(objectsInScene);
 }
 
 void Game::run() {
@@ -26,15 +24,15 @@ void Game::processEvents() {
 	{
 		if (event.type == sf::Event::Closed)
 			window.close();
-
 	}
+
+	ennemySpawner.createEnnemy(objectsInScene);
+
 	float timeBetween = clock.getElapsedTime().asSeconds();
 
 	for (int i = 0; i < objectsInScene.size(); i++) {
-		if (contains(objectsInScene, objectsInScene[i]))
-			objectsInScene[i]->inputs(window, event, timeBetween);
-		else
-			objectsInScene.erase(objectsInScene.begin() + i);
+		//if (contains(objectsInScene, objectsInScene[i]))
+			objectsInScene[i]->inputs(window, event, timeBetween, objectsToDelete);
 	}
 
 	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
@@ -61,6 +59,12 @@ void Game::render() {
 	}
 
 	window.display();
+
+	for (int i = 0; i < objectsToDelete.size(); i++) {
+		GameObject* deleted = objectsToDelete[i];
+		objectsInScene.erase(objectsToDelete.begin() + i);
+		delete(deleted);
+	}
 }
 
 bool Game::contains(const std::vector<GameObject*>& vec, const GameObject* coord)
