@@ -2,6 +2,8 @@
 #include "GameObject.h"
 #include "EnnemyShip.h"
 #include <SFML/Graphics.hpp>
+#include <random>
+#include "Game.h"
 
 EnnemySpawner::EnnemySpawner() :
 	timeBetweenSpawn(2)
@@ -16,7 +18,13 @@ void EnnemySpawner::createEnnemy(std::vector<GameObject*> &objectsInScene)
 		clock.restart();
 		EnnemyShip* ennemy = new EnnemyShip("EnnemyShip", 0, 0, "Assets/Shooter/spaceship.png");
 		ennemy->getSprite().setRotation(180);
-		ennemy->setX(ennemy->getX() + ennemy->textureSpaceShip.getSize().x);
+
+		std::random_device rd; // obtain a random number from hardware
+		std::mt19937 gen(rd()); // seed the generator
+		std::uniform_int_distribution<> distr(0, Game::WINDOW_WIDTH - ennemy->textureSpaceShip.getSize().x); // define the range
+
+		ennemy->setX(ennemy->getX() + ennemy->textureSpaceShip.getSize().x + distr(gen));
+
 		objectsInScene.push_back(ennemy);
 	}
 }
