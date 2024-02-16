@@ -7,7 +7,7 @@ class EnnemySpawner
 {
 public:
 	EnnemySpawner();
-	void createEnnemy(std::vector<GameObject*>& objectsInScene);
+	void createEnnemy(std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToAdd);
 	//void deleteEnnemy(std::vector<GameObject*>& objectsInScene);
 
 protected :

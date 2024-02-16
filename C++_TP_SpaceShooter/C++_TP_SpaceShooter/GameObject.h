@@ -4,7 +4,7 @@
 class GameObject
 {
 public:
-	GameObject(std::string _nameClass, float _x, float _y, std::string _spriteLocation);
+	GameObject(std::string _nameClass, float _x, float _y, std::string _spriteLocation, std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& _objectsToAdd);
 	std::string nameClass;
 
 	std::string getNameClass();
@@ -33,10 +33,12 @@ public:
 	void update(float _time);
 	void draw(sf::RenderWindow& _window);
 
-	virtual void inputs(sf::RenderWindow& _window, sf::Event event, float _time, std::vector<GameObject*> objectsToDelete);
-	virtual void fire();
+	virtual void inputs(sf::RenderWindow& _window, sf::Event event, float _time, std::vector<GameObject*>& objectsToDelete);
+	virtual void fire(std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToAdd);
 
 	sf::Texture textureSpaceShip;
+	std::vector<GameObject*>& objectsInScene;
+	std::vector<GameObject*>& objectsToAdd;
 protected:
 	float x;
 	float y;

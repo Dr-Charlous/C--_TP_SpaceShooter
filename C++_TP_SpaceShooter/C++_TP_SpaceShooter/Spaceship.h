@@ -5,7 +5,7 @@
 class Spaceship : public GameObject
 {
 public:
-	Spaceship(std::string _nameClass, float _x, float _y, std::string _spriteLocation);
+	Spaceship(std::string _nameClass, float _x, float _y, std::string _spriteLocation, std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToAdd);
 
 protected:
 	sf::Clock clock;

@@ -1,14 +1,17 @@
 #include "GameObject.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Projectile.h"
 
-GameObject::GameObject(std::string _nameClass, float _x, float _y, std::string _spriteLocation) :
+GameObject::GameObject(std::string _nameClass, float _x, float _y, std::string _spriteLocation, std::vector<GameObject*>& _objectsInScene, std::vector<GameObject*>& _objectsToAdd) :
 	nameClass(_nameClass),
 	x(_x),
 	y(_y),
 	spriteLocation(_spriteLocation),
 	speed(100),
-	timeBetweenFire(0.5f)
+	timeBetweenFire(0.5f),
+    objectsInScene(_objectsInScene),
+	objectsToAdd(_objectsToAdd)
 {
 	if (!textureSpaceShip.loadFromFile(spriteLocation)) {
 		std::cout << "Erreur" << std::endl;
@@ -107,7 +110,7 @@ void GameObject::draw(sf::RenderWindow& _window)
 	_window.draw(spriteSpaceShip);
 }
 
-void GameObject::inputs(sf::RenderWindow& _window, sf::Event event, float _time, std::vector<GameObject*> objectsToDelete)
+void GameObject::inputs(sf::RenderWindow& _window, sf::Event event, float _time, std::vector<GameObject*>& objectsToDelete)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && x > 0)
 	{
@@ -131,16 +134,20 @@ void GameObject::inputs(sf::RenderWindow& _window, sf::Event event, float _time,
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		fire();
+		fire(objectsInScene, objectsToAdd);
 	}
 }
 
-void GameObject::fire()
+void GameObject::fire(std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToAdd)
 {
 	float timeBetween = clock.getElapsedTime().asSeconds();
 	if (timeBetween > timeBetweenFire)
 	{
 		clock.restart();
-		std::cout << "Fire" << std::endl;
+		//std::cout << "Fire" << std::endl;
+		Projectile* projectile = new Projectile("Projectile", x + textureSpaceShip.getSize().x / 2, y, "Assets/Shooter/laser.png", objectsInScene, objectsToAdd);
+		projectile->setSpeed(200);
+		projectile->setY(y - projectile->textureSpaceShip.getSize().y);
+		objectsToAdd.push_back(projectile);
 	}
 }

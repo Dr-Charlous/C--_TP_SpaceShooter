@@ -4,7 +4,7 @@
 
 Game::Game(const std::string& title) :
 	window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), title),
-	spaceship("SpaceShip", WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 8 * 6, "Assets/Shooter/spaceship.png")
+	spaceship("SpaceShip", WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 8 * 6, "Assets/Shooter/spaceship.png", objectsToAdd, objectsToAdd)
 {
 	background.setTexture();
 	objectsInScene.push_back(&spaceship);
@@ -19,6 +19,15 @@ void Game::run() {
 }
 
 void Game::processEvents() {
+	for (int i = 0; i < objectsToAdd.size(); i++) {
+		objectsInScene.push_back(objectsToAdd[i]);
+	}
+	objectsToAdd.clear();
+
+	
+
+
+
 	sf::Event event;
 	while (window.pollEvent(event))
 	{
@@ -26,7 +35,7 @@ void Game::processEvents() {
 			window.close();
 	}
 
-	ennemySpawner.createEnnemy(objectsInScene);
+	ennemySpawner.createEnnemy(objectsInScene, objectsToAdd);
 
 	float timeBetween = clock.getElapsedTime().asSeconds();
 
@@ -60,14 +69,19 @@ void Game::render() {
 
 	window.display();
 
+
+
+
+
 	for (int i = 0; i < objectsToDelete.size(); i++) {
 		GameObject* deleted = objectsToDelete[i];
-		objectsInScene.erase(objectsToDelete.begin() + i);
+		objectsInScene.erase(std::find(objectsInScene.begin(), objectsInScene.end(), deleted));
 		delete(deleted);
 	}
+	objectsToDelete.clear();
 }
 
-bool Game::contains(const std::vector<GameObject*>& vec, const GameObject* coord)
-{
-	return std::find(vec.begin(), vec.end(), coord) != vec.end();
-}
+//bool Game::contains(const std::vector<GameObject*>& vec, const GameObject* coord)
+//{
+//	return std::find(vec.begin(), vec.end(), coord) != vec.end();
+//}

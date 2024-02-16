@@ -10,22 +10,21 @@ EnnemySpawner::EnnemySpawner() :
 {
 }
 
-void EnnemySpawner::createEnnemy(std::vector<GameObject*> &objectsInScene)
+void EnnemySpawner::createEnnemy(std::vector<GameObject*> & objectsInScene, std::vector<GameObject*>& objectsToAdd)
 {
 	float timeBetween = clock.getElapsedTime().asSeconds();
 	if (timeBetween > timeBetweenSpawn)
 	{
 		clock.restart();
-		EnnemyShip* ennemy = new EnnemyShip("EnnemyShip", 0, 0, "Assets/Shooter/spaceship.png");
-		ennemy->getSprite().setRotation(180);
+		EnnemyShip* ennemy = new EnnemyShip("EnnemyShip", 0, 0, "Assets/Shooter/enemy.png", objectsInScene, objectsToAdd);
 
 		std::random_device rd; // obtain a random number from hardware
 		std::mt19937 gen(rd()); // seed the generator
 		std::uniform_int_distribution<> distr(0, Game::WINDOW_WIDTH - ennemy->textureSpaceShip.getSize().x); // define the range
 
-		ennemy->setX(ennemy->getX() + ennemy->textureSpaceShip.getSize().x + distr(gen));
+		ennemy->setX(ennemy->getX() + distr(gen));
 
-		objectsInScene.push_back(ennemy);
+		objectsToAdd.push_back(ennemy);
 	}
 }
 

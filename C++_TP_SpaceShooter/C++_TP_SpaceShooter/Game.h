@@ -21,7 +21,8 @@ public:
 
 	std::vector<GameObject*> objectsInScene;
 	std::vector<GameObject*> objectsToDelete;
-	bool contains(const std::vector<GameObject*>& vec, const GameObject* coord);
+	std::vector<GameObject*> objectsToAdd;
+	//bool contains(const std::vector<GameObject*>& vec, const GameObject* coord);
 
 protected:
 	sf::Clock clock;
