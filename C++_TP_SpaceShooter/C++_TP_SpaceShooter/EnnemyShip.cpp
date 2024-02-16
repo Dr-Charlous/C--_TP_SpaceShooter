@@ -1,35 +1,21 @@
 #include "EnnemyShip.h"
+#include "Game.h"
 #include <iostream>
 
 EnnemyShip::EnnemyShip(std::string _nameClass, float _x, float _y, std::string _spriteLocation) :
 	GameObject(_nameClass, _x, _y, _spriteLocation),
-	timeBetweenFire(1)
+	timeBetweenFire(2)
 {
 }
 
 void EnnemyShip::inputs(sf::RenderWindow& _window, sf::Event event, float _time)
 {
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-	//{
-	//	left(_time);
-	//}
-	//else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-	//{
-	//	right(_time);
-	//}
-
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-	//{
-	//	forward(_time);
-	//}
-	//else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-	//{
+	if (y < Game::WINDOW_HEIGHT) {
 		backward(_time);
-	//}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	{
 		fire();
+	}
+	else {
+		//delete(this);
 	}
 }
 

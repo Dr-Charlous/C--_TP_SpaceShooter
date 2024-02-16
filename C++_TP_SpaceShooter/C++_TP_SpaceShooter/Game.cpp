@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-Game::Game(const std::string& title) : 
+Game::Game(const std::string& title) :
 	window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), title),
 	spaceship("SpaceShip", WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 8 * 6, "Assets/Shooter/spaceship.png")
 {
@@ -31,7 +31,10 @@ void Game::processEvents() {
 	float timeBetween = clock.getElapsedTime().asSeconds();
 
 	for (int i = 0; i < objectsInScene.size(); i++) {
-		objectsInScene[i]->inputs(window, event, timeBetween);
+		if (contains(objectsInScene, objectsInScene[i]))
+			objectsInScene[i]->inputs(window, event, timeBetween);
+		else
+			objectsInScene.erase(objectsInScene.begin() + i);
 	}
 
 	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
@@ -58,4 +61,9 @@ void Game::render() {
 	}
 
 	window.display();
+}
+
+bool Game::contains(const std::vector<GameObject*>& vec, const GameObject* coord)
+{
+	return std::find(vec.begin(), vec.end(), coord) != vec.end();
 }

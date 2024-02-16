@@ -7,7 +7,8 @@ GameObject::GameObject(std::string _nameClass, float _x, float _y, std::string _
 	x(_x),
 	y(_y),
 	spriteLocation(_spriteLocation),
-	speed(100)
+	speed(100),
+	timeBetweenFire(0.5f)
 {
 	if (!textureSpaceShip.loadFromFile(spriteLocation)) {
 		std::cout << "Erreur" << std::endl;
@@ -127,7 +128,7 @@ void GameObject::inputs(sf::RenderWindow& _window, sf::Event event, float _time)
 void GameObject::fire()
 {
 	float timeBetween = clock.getElapsedTime().asSeconds();
-	if (timeBetween > timeBetweenFire)
+	if (timeBetween >= timeBetweenFire)
 	{
 		clock.restart();
 		std::cout << "Fire" << std::endl;

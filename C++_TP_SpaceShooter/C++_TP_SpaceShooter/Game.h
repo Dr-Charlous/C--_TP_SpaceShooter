@@ -19,12 +19,14 @@ public:
 	void update();
 	void render();
 
+	std::vector<GameObject*> objectsInScene;
+	bool contains(const std::vector<GameObject*>& vec, const GameObject* coord);
+
 protected:
 	sf::Clock clock;
 	sf::RenderWindow window;
 	BackGround background;
 	EnnemySpawner ennemySpawner;
 	Spaceship spaceship;
-	std::vector<GameObject*> objectsInScene;
 };
 
