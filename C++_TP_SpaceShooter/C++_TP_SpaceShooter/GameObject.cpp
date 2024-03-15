@@ -151,3 +151,8 @@ void GameObject::fire(std::vector<GameObject*>& objectsInScene, std::vector<Game
 		objectsToAdd.push_back(projectile);
 	}
 }
+
+void GameObject::collision()
+{
+
+}
