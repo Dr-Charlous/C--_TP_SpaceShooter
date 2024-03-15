@@ -35,7 +35,7 @@ public:
 
 	virtual void inputs(sf::RenderWindow& _window, sf::Event event, float _time, std::vector<GameObject*>& objectsToDelete);
 	virtual void fire(std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToAdd);
-	virtual void collision();
+	virtual void collision(std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToDelete);
 
 	sf::Texture textureSpaceShip;
 	std::vector<GameObject*>& objectsInScene;

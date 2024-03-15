@@ -17,6 +17,7 @@ void EnnemyShip::inputs(sf::RenderWindow& _window, sf::Event event, float _time,
 	}
 	else {
 		objectsToDelete.push_back(this);
+		collision(objectsInScene, objectsToDelete);
 	}
 }
 
