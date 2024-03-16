@@ -136,6 +136,8 @@ void GameObject::inputs(sf::RenderWindow& _window, sf::Event event, float _time,
 	{
 		fire(objectsInScene, objectsToAdd);
 	}
+
+	collision();
 }
 
 void GameObject::fire(std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToAdd)
@@ -154,5 +156,5 @@ void GameObject::fire(std::vector<GameObject*>& objectsInScene, std::vector<Game
 
 void GameObject::collision()
 {
-
+	std::cout << "fdp ta grand mere la chienne" << std::endl;
 }

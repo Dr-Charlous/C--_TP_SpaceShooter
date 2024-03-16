@@ -1,3 +1,2 @@
-﻿  EnnemyShip.cpp
-C:\Users\charles.piercourt\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\EnnemyShip.cpp(8,17): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
-  C++_TP_SpaceShooter.vcxproj -> C:\Users\charles.piercourt\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\x64\Debug\C++_TP_SpaceShooter.exe
+﻿  GameObject.cpp
+  C++_TP_SpaceShooter.vcxproj -> C:\Users\Charles\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\x64\Debug\C++_TP_SpaceShooter.exe
