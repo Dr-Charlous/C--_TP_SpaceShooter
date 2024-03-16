@@ -10,7 +10,7 @@ GameObject::GameObject(std::string _nameClass, float _x, float _y, std::string _
 	spriteLocation(_spriteLocation),
 	speed(100),
 	timeBetweenFire(0.5f),
-    objectsInScene(_objectsInScene),
+	objectsInScene(_objectsInScene),
 	objectsToAdd(_objectsToAdd)
 {
 	if (!textureSpaceShip.loadFromFile(spriteLocation)) {
@@ -110,7 +110,7 @@ void GameObject::draw(sf::RenderWindow& _window)
 	_window.draw(spriteSpaceShip);
 }
 
-void GameObject::inputs(sf::RenderWindow& _window, sf::Event event, float _time, std::vector<GameObject*>& objectsToDelete)
+void GameObject::inputs(sf::RenderWindow& _window, sf::Event event, float _time, std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToDelete)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && x > 0)
 	{
@@ -137,7 +137,7 @@ void GameObject::inputs(sf::RenderWindow& _window, sf::Event event, float _time,
 		fire(objectsInScene, objectsToAdd);
 	}
 
-	collision();
+	collision(objectsInScene, objectsToDelete);
 }
 
 void GameObject::fire(std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToAdd)
@@ -146,7 +146,6 @@ void GameObject::fire(std::vector<GameObject*>& objectsInScene, std::vector<Game
 	if (timeBetween > timeBetweenFire)
 	{
 		clock.restart();
-		//std::cout << "Fire" << std::endl;
 		Projectile* projectile = new Projectile("Projectile", x + textureSpaceShip.getSize().x / 2, y, "Assets/Shooter/laser.png", objectsInScene, objectsToAdd);
 		projectile->setSpeed(200);
 		projectile->setY(y - projectile->textureSpaceShip.getSize().y);
@@ -154,7 +153,28 @@ void GameObject::fire(std::vector<GameObject*>& objectsInScene, std::vector<Game
 	}
 }
 
-void GameObject::collision()
+void GameObject::collision(std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToDelete)
 {
-	std::cout << "fdp ta grand mere la chienne" << std::endl;
+	if (objectsInScene.size() > 0) {
+		for (size_t i = 0; i < objectsInScene.size(); i++)
+		{
+			if (objectsInScene[i]->getNameClass() != "EnnemyShip") {
+				float x1 = x;
+				float x2 = x + textureSpaceShip.getSize().x;
+				float x3 = objectsInScene[i]->getX();
+				float x4 = objectsInScene[i]->getX() + objectsInScene[i]->textureSpaceShip.getSize().x;
+				float y1 = y;
+				float y2 = y + textureSpaceShip.getSize().y;
+				float y3 = objectsInScene[i]->getY();
+				float y4 = objectsInScene[i]->getY() + objectsInScene[i]->textureSpaceShip.getSize().y;
+
+				if (x3 <= x2 && x3 >= x1 && x4 >= x1 && x4 >= x2) {
+					if (y3 <= y2 && y3 >= y1 && y4 >= y1 && y4 >= y2) 
+					{
+ 						objectsToDelete.push_back(objectsInScene[0]);
+					}
+				}
+			}
+		}
+	}
 }

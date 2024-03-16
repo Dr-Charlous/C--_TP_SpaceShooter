@@ -24,10 +24,6 @@ void Game::processEvents() {
 	}
 	objectsToAdd.clear();
 
-	
-
-
-
 	sf::Event event;
 	while (window.pollEvent(event))
 	{
@@ -41,7 +37,7 @@ void Game::processEvents() {
 
 	for (int i = 0; i < objectsInScene.size(); i++) {
 		//if (contains(objectsInScene, objectsInScene[i]))
-			objectsInScene[i]->inputs(window, event, timeBetween, objectsToDelete);
+			objectsInScene[i]->inputs(window, event, timeBetween, objectsInScene, objectsToDelete);
 	}
 
 	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
@@ -68,10 +64,6 @@ void Game::render() {
 	}
 
 	window.display();
-
-
-
-
 
 	for (int i = 0; i < objectsToDelete.size(); i++) {
 		GameObject* deleted = objectsToDelete[i];
