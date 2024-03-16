@@ -15,6 +15,5 @@ void Projectile::inputs(sf::RenderWindow& _window, sf::Event event, float _time,
 	}
 	else {
 		forward(_time);
-		collision(objectsInScene, objectsToDelete);
 	}
 }

@@ -10,7 +10,7 @@ GameObject::GameObject(std::string _nameClass, float _x, float _y, std::string _
 	spriteLocation(_spriteLocation),
 	speed(100),
 	timeBetweenFire(0.5f),
-	objectsInScene(_objectsInScene),
+    objectsInScene(_objectsInScene),
 	objectsToAdd(_objectsToAdd)
 {
 	if (!textureSpaceShip.loadFromFile(spriteLocation)) {
@@ -136,8 +136,6 @@ void GameObject::inputs(sf::RenderWindow& _window, sf::Event event, float _time,
 	{
 		fire(objectsInScene, objectsToAdd);
 	}
-
-	collision(objectsInScene, objectsToDelete);
 }
 
 void GameObject::fire(std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToAdd)
@@ -154,12 +152,7 @@ void GameObject::fire(std::vector<GameObject*>& objectsInScene, std::vector<Game
 	}
 }
 
-void GameObject::collision(std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToDelete)
+void GameObject::collision()
 {
-	for (size_t i = 0; i < objectsInScene.size(); i++)
-	{
-		if ((x + textureSpaceShip.getSize().x >= objectsInScene[i]->getX()) && (x + textureSpaceShip.getSize().x == objectsInScene[i]->getX() + objectsInScene[i]->textureSpaceShip.getSize().x)) {
-			//la condition me soule -_-
-		}
-	}
+
 }
