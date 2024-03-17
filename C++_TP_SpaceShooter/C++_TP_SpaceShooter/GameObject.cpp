@@ -3,15 +3,17 @@
 #include <iostream>
 #include "Projectile.h"
 
-GameObject::GameObject(std::string _nameClass, float _x, float _y, std::string _spriteLocation, std::vector<GameObject*>& _objectsInScene, std::vector<GameObject*>& _objectsToAdd) :
+GameObject::GameObject(std::string _nameClass, float _x, float _y, int _hp, std::string _spriteLocation, std::vector<GameObject*>& _objectsInScene, std::vector<GameObject*>& _objectsToAdd) :
 	nameClass(_nameClass),
 	x(_x),
 	y(_y),
+	hp(_hp),
 	spriteLocation(_spriteLocation),
 	speed(100),
 	timeBetweenFire(0.5f),
 	objectsInScene(_objectsInScene),
-	objectsToAdd(_objectsToAdd)
+	objectsToAdd(_objectsToAdd),
+	hpMax(hp)
 {
 	if (!textureSpaceShip.loadFromFile(spriteLocation)) {
 		std::cout << "Erreur" << std::endl;
@@ -48,6 +50,16 @@ float GameObject::getY()
 void GameObject::setY(float y)
 {
 	this->y = y;
+}
+
+int GameObject::getHp()
+{
+	return this->hp;
+}
+
+void GameObject::setHp(int hp)
+{
+	this->hp = hp;
 }
 
 float GameObject::getSpeed()
@@ -100,6 +112,13 @@ void GameObject::backward(float _time)
 	this->y += speed * _time;
 }
 
+void GameObject::explode()
+{
+	if (!textureSpaceShip.loadFromFile("Assets/Shooter/spaceship.png")) {
+		std::cout << "Erreur" << std::endl;
+	}
+}
+
 void GameObject::update(float _time)
 {
 	spriteSpaceShip.setPosition(x, y);
@@ -112,6 +131,8 @@ void GameObject::draw(sf::RenderWindow& _window)
 
 void GameObject::inputs(sf::RenderWindow& _window, sf::Event event, float _time, std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToDelete)
 {
+	collision(objectsInScene, objectsToDelete);
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && x > 0)
 	{
 		left(_time);
@@ -136,8 +157,6 @@ void GameObject::inputs(sf::RenderWindow& _window, sf::Event event, float _time,
 	{
 		fire(objectsInScene, objectsToAdd);
 	}
-
-	collision(objectsInScene, objectsToDelete);
 }
 
 void GameObject::fire(std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToAdd)
@@ -146,8 +165,8 @@ void GameObject::fire(std::vector<GameObject*>& objectsInScene, std::vector<Game
 	if (timeBetween > timeBetweenFire)
 	{
 		clock.restart();
-		Projectile* projectile = new Projectile("Projectile", x + textureSpaceShip.getSize().x / 2, y, "Assets/Shooter/laser.png", objectsInScene, objectsToAdd);
-		projectile->setSpeed(200);
+		Projectile* projectile = new Projectile("Projectile", x + textureSpaceShip.getSize().x / 2, y, 1, "Assets/Shooter/laser.png", objectsInScene, objectsToAdd);
+		projectile->setSpeed(300);
 		projectile->setY(y - projectile->textureSpaceShip.getSize().y);
 		objectsToAdd.push_back(projectile);
 	}
@@ -155,10 +174,10 @@ void GameObject::fire(std::vector<GameObject*>& objectsInScene, std::vector<Game
 
 void GameObject::collision(std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToDelete)
 {
-	if (objectsInScene.size() > 0) {
+	/*if (objectsInScene.size() > 0) {
 		for (size_t i = 0; i < objectsInScene.size(); i++)
 		{
-			if (objectsInScene[i]->getNameClass() != "EnnemyShip") {
+			if (objectsInScene[i]->getNameClass() != "") {
 				float x1 = x;
 				float x2 = x + textureSpaceShip.getSize().x;
 				float x3 = objectsInScene[i]->getX();
@@ -176,5 +195,5 @@ void GameObject::collision(std::vector<GameObject*>& objectsInScene, std::vector
 				}
 			}
 		}
-	}
+	}*/
 }

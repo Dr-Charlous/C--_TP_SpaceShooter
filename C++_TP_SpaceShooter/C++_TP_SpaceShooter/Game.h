@@ -5,6 +5,7 @@
 #include "Spaceship.h"
 #include "EnnemySpawner.h"
 #include "EnnemyShip.h"
+#include "Ui.h"
 
 class Game
 {
@@ -30,5 +31,6 @@ protected:
 	BackGround background;
 	EnnemySpawner ennemySpawner;
 	Spaceship spaceship;
+	Ui ui;
 };
 

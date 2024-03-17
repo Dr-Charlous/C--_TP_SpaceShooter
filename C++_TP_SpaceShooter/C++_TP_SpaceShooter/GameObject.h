@@ -4,7 +4,7 @@
 class GameObject
 {
 public:
-	GameObject(std::string _nameClass, float _x, float _y, std::string _spriteLocation, std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& _objectsToAdd);
+	GameObject(std::string _nameClass, float _x, float _y, int _hp, std::string _spriteLocation, std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& _objectsToAdd);
 	std::string nameClass;
 
 	std::string getNameClass();
@@ -15,6 +15,9 @@ public:
 
 	float getY();
 	void setY(float y);
+
+	int getHp();
+	void setHp(int hp);
 
 	float getSpeed();
 	void setSpeed(float speed);
@@ -29,6 +32,7 @@ public:
 	void left(float _time);
 	void forward(float _time);
 	void backward(float _time);
+	void explode();
 
 	void update(float _time);
 	void draw(sf::RenderWindow& _window);
@@ -38,6 +42,7 @@ public:
 	virtual void collision(std::vector<GameObject*>& objectsInScene, std::vector<GameObject*>& objectsToDelete);
 
 	sf::Texture textureSpaceShip;
+	sf::Texture textureExplosion;
 	std::vector<GameObject*>& objectsInScene;
 	std::vector<GameObject*>& objectsToAdd;
 protected:
@@ -48,5 +53,7 @@ protected:
 	sf::Sprite spriteSpaceShip;
 	sf::Clock clock;
 	float timeBetweenFire;
+	int hp;
+	int hpMax;
 };
 

@@ -4,7 +4,8 @@
 
 Game::Game(const std::string& title) :
 	window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), title),
-	spaceship("SpaceShip", WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 8 * 6, "Assets/Shooter/spaceship.png", objectsToAdd, objectsToAdd)
+	spaceship("SpaceShip", WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 8 * 6, 3, "Assets/Shooter/spaceship.png", objectsToAdd, objectsToAdd),
+	ui(0, 0, 20)
 {
 	background.setTexture();
 	objectsInScene.push_back(&spaceship);
@@ -19,11 +20,6 @@ void Game::run() {
 }
 
 void Game::processEvents() {
-	for (int i = 0; i < objectsToAdd.size(); i++) {
-		objectsInScene.push_back(objectsToAdd[i]);
-	}
-	objectsToAdd.clear();
-
 	sf::Event event;
 	while (window.pollEvent(event))
 	{
@@ -63,14 +59,28 @@ void Game::render() {
 		objectsInScene[i]->draw(window);
 	}
 
+	ui.drawText(window, objectsInScene);
+
 	window.display();
 
 	for (int i = 0; i < objectsToDelete.size(); i++) {
 		GameObject* deleted = objectsToDelete[i];
+
+		if (deleted == objectsInScene[0]) {
+			window.close();
+		}
+		if (deleted->getNameClass() == "EnnemyShip")
+			ui.setScore(ui.getScore() + 120 /*deleted.scoreGiven*/);
+
 		objectsInScene.erase(std::find(objectsInScene.begin(), objectsInScene.end(), deleted));
 		delete(deleted);
 	}
 	objectsToDelete.clear();
+
+	for (int i = 0; i < objectsToAdd.size(); i++) {
+		objectsInScene.push_back(objectsToAdd[i]);
+	}
+	objectsToAdd.clear();
 }
 
 //bool Game::contains(const std::vector<GameObject*>& vec, const GameObject* coord)

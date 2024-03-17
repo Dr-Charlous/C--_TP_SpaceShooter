@@ -1,1 +1,3 @@
-﻿  C++_TP_SpaceShooter.vcxproj -> C:\Users\Charles\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\x64\Debug\C++_TP_SpaceShooter.exe
+﻿  Projectile.cpp
+C:\Users\Charles\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\C++_TP_SpaceShooter\Projectile.cpp(28,13): warning C4267: '=' : conversion de 'size_t' en 'int', perte possible de données
+  C++_TP_SpaceShooter.vcxproj -> C:\Users\Charles\Documents\GitHub\C--_TP_SpaceShooter\C++_TP_SpaceShooter\x64\Debug\C++_TP_SpaceShooter.exe

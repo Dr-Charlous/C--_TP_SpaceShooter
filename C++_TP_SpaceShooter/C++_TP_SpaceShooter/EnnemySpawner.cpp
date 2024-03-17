@@ -16,7 +16,7 @@ void EnnemySpawner::createEnnemy(std::vector<GameObject*> & objectsInScene, std:
 	if (timeBetween > timeBetweenSpawn)
 	{
 		clock.restart();
-		EnnemyShip* ennemy = new EnnemyShip("EnnemyShip", 0, 0, "Assets/Shooter/enemy.png", objectsInScene, objectsToAdd);
+		EnnemyShip* ennemy = new EnnemyShip("EnnemyShip", 0, 0, 1, "Assets/Shooter/enemy.png", objectsInScene, objectsToAdd);
 
 		std::random_device rd; // obtain a random number from hardware
 		std::mt19937 gen(rd()); // seed the generator
